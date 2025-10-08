@@ -1,0 +1,7 @@
+# 役割: 新しい Todo を追加する Mutation。サーバ側で生成された id が返る。
+mutation AddTodo($title: String!, $description: String) {
+    addTodo(title: $title, description: $description) {
+        id
+        title
+    }
+}
