@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    // 出力先と入力元（任意）
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    // ★ ここが重要（ESM/Node向け）
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ES2022",
+    "lib": ["ES2022"],            // Nodeで必要な最新ES機能
+
+    // 型まわり
+    "strict": true,
+    "esModuleInterop": true,      // CJSな型定義との橋渡し
+    "skipLibCheck": true,
+
+    // お好みの安全設定（そのまま使ってOK）
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+    // 生成物（任意）
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true
+
+    // ❌ これは外す or false に（CJS扱いで厳しめに怒られやすい）
+    // "verbatimModuleSyntax": true,
+
+    // ❌ サーバなら不要
+    // "jsx": "react-jsx",
+
+    // ❌ 好みですが、まずは外してシンプルに
+    // "isolatedModules": true,
+    // "noUncheckedSideEffectImports": true,
+    // "moduleDetection": "force"
+  }
+}
