@@ -1,0 +1,30 @@
+services:
+  server:
+    image: node:20
+    working_dir: /workspace/server
+    volumes:
+      - ./server:/workspace/server
+      - server-node_modules:/workspace/server/node_modules
+    environment:
+      NODE_ENV: development
+    command: bash -lc "npm install && npm run dev"
+    ports:
+      - "4000:4000"
+  client:
+    image: node:20
+    working_dir: /workspace/client
+    volumes:
+      - ./client:/workspace/client
+      - client-node_modules:/workspace/client/node_modules
+    environment:
+      NODE_ENV: development
+      VITE_GRAPHQL_URL: http://server:4000/graphql
+      CHOKIDAR_USEPOLLING: "true"
+    command: bash -lc "npm install && npm run dev -- --host 0.0.0.0"
+    ports:
+      - "5173:5173"
+    depends_on:
+      - server
+volumes:
+  client-node_modules:
+  server-node_modules:

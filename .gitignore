@@ -1,4 +1,4 @@
-# Logs
+﻿# Logs
 logs/
 *.log
 npm-debug.log*
@@ -53,3 +53,7 @@ pids
 # OS metadata
 .DS_Store
 Thumbs.db
+
+# Yarn artifacts
+.yarn/
+
