@@ -1,7 +1,0 @@
-# 役割: Todo の一覧を取得するクエリ。必要なフィールドだけを書く（id と title）。
-query GetTodos {
-    todos {
-        id
-        title
-    }
-}

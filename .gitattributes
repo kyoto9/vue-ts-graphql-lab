@@ -1,0 +1,18 @@
+# テキストの改行はリポジトリ内で LF に統一
+* text=auto eol=lf
+
+# Windows シェルスクリプトは CRLF のまま保持（cmd / PowerShell 用）
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# バイナリアセットは改行変換を行わない
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg binary
+*.webp binary
+*.woff binary
+*.woff2 binary

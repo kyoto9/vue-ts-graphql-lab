@@ -1,13 +1,27 @@
-// 役割: Vueアプリの起点。Apollo Client を全コンポーネントに提供する。
-import { createApp } from 'vue'
-import App from './App.vue' // ルートコンポーネント（後述の pages をここで出し分け）
-import { DefaultApolloClient } from '@vue/apollo-composable'
-import { apolloClient } from './libs/apolloClient' // Apollo Client の実体
-import router from './router' // 画面遷移の仕組み（一覧→詳細→戻る）
+/**
+ * ファイル: client/src/main.ts
+ * 目的:
+ *  - Vueアプリの“エントリーポイント”（最初に実行される場所）
+ *  - ここで Apollo Client を “アプリ全体に提供” する
+ *
+ * 「提供(provide)」とは:
+ *  - 子コンポーネント（App.vueなど）から、Apolloの機能(useQuery/useMutation)が使えるようにすること
+ */
+console.log("[main] file loaded");
+import { createApp } from "vue";
+import App from "./App.vue";
 
+// VueとApolloをつなぐ公式パッケージ
+import { DefaultApolloClient } from "@vue/apollo-composable";
+import { apolloClient } from "./lib/apollo";
 
-createApp(App)
-// provide: 全コンポーネントから Apollo Client を使えるように注入
-.provide(DefaultApolloClient, apolloClient)
-.use(router)
-.mount('#app')
+console.log("[main] before createApp");
+const app = createApp(App);
+
+// "default" クライアントとして全コンポーネントに提供
+app.provide(DefaultApolloClient, apolloClient);
+console.log("[main] provided DefaultApolloClient");
+
+console.log("[main] before mount");
+app.mount("#app"); // index.html の <div id="app"> に描画
+console.log("[main] after mount");

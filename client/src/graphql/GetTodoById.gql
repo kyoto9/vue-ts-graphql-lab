@@ -1,8 +1,0 @@
-# 役割: id を指定して1件の Todo を取得。
-query GetTodoById($id: ID!) {
-    todo(id: $id) {
-        id
-        title
-        description
-    }
-}
